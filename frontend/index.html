@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Oceni doktora</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="jumbotron text-center">
+            <h1>Oceni doktora</h1>
+            <p>Ovde mozete oceniti vaseg lekara sirotinjo!</p> 
+        </div>
+        <div class="container">
+            <div class="panel-group row">
+                <div id="lista-doktora" class="panel panel-primary ">
+                
+                </div>
+        
+            </div>
+
+        </div>
+        <!-- Skripta za citanje json-a -->
+        <script>
+           $.get( "http://localhost/oceni-doktora/backend/api/getDoctors.php", function( data ) {
+	        var doctorsArray = JSON.parse(data)    
+                $.each(doctorsArray, function(i,doktor){
+                    content = '<div class="panel-heading">' + doktor.ime + " " + doktor.prezime + '</div>';
+                    content += '<div class="panel-body"><img class="img-thumbnail slike-velicina" src="' + doktor.slika + '"/></div>';
+                    content += '<div class="row">';
+                    content += '<div class="panel-body col-sm-3">'+ doktor.prosek +'</div>';
+                    content += '<div class="panel-body col-sm-3"><span class="stars">'+ doktor.prosek +'</span></div>';
+                    content += '</div>';
+                    content += '<br/>';
+                    $(content).appendTo("#lista-doktora");
+                });
+                 $(function() {
+                 $('span.stars').stars();
+                 });+ '</div>';
+	        });
+
+            $.fn.stars = function() {
+            return $(this).each(function() {
+            // Get the value
+            var val = parseFloat($(this).html());
+            // Make sure that the value is in 0 - 5 range, multiply to get width
+            var size = Math.max(0, (Math.min(5, val))) * 16;
+            // Create stars holder
+            var $span = $('<span />').width(size);
+            // Replace the numerical value with stars
+            $(this).html($span);
+            });
+        }
+       
+           
+        </script>
+<!-- http://localhost/oceni-doktora/backend/api/getDoctors.php -->
+    </body>
+</html>
