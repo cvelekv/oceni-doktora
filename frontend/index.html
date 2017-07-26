@@ -31,10 +31,10 @@
                 $.each(doctorsArray, function(i,doktor){
                     content = '<div class="panel-heading">' + doktor.ime + " " + doktor.prezime + '</div>';
                     content += '<div class="panel-body"><img class="img-thumbnail slike-velicina" src="' + doktor.slika + '"/></div>';
-                    content += '<div class="row">';
-                    content += '<div class="panel-body col-sm-3">'+ doktor.prosek +'</div>';
-                    content += '<div class="panel-body col-sm-3"><span class="stars">'+ doktor.prosek +'</span></div>';
-                    content += '</div>';
+                    content += '<div class="panel-body">'+ doktor.prosek +'</div>';
+                    content += '<div class="panel-body"><span class="stars">'+ doktor.prosek +'</span></div>';
+                    content += '<div class="panel-body">' + doktor.institucija +'</div>'
+                    content += '<div class="panel-body">' + doktor.grad + '</div>'
                     content += '<br/>';
                     $(content).appendTo("#lista-doktora");
                 });
