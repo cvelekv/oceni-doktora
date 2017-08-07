@@ -25,7 +25,7 @@ var drawStars = function(){
     });+ '</div>';
     }
 var getDoctors = function(){
-    $.get( "http://localhost/oceni-doktora/backend/api/getDoctors.php", function( data ) {
+    $.get( "/backend/api/getDoctors.php", function( data ) {
     var doctorsArray = JSON.parse(data)
         printDoctors(doctorsArray);    
     });          
@@ -33,7 +33,7 @@ var getDoctors = function(){
     $.fn.stars();
 };
 var getGradovi = function(){
-$.get("http://localhost/oceni-doktora/backend/api/getGradovi.php", function( data ) {
+$.get("/backend/api/getGradovi.php", function( data ) {
     var gradoviArray =  JSON.parse(data);
     printGrad(gradoviArray);
 });
@@ -45,7 +45,7 @@ var printGrad = function (gradoviArray){
     });
 }
 var getInstitucije = function (){
-    $.get("http://localhost/oceni-doktora/backend/api/getInstitucija.php", function(data) {
+    $.get("/backend/api/getInstitucija.php", function(data) {
         var institucijaArray = JSON.parse(data);
         printInstitucija(institucijaArray);
     });

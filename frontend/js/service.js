@@ -1,6 +1,6 @@
 var searchDoctors = function() {
 var searchData =JSON.stringify( {"searchdoctor" : $("input[name='searchData']").val()});
-$.post("http://localhost/oceni-doktora/backend/api/searchDoctors.php", searchData, function(data){
+$.post("/backend/api/searchDoctors.php", searchData, function(data){
     var doctorsArray = JSON.parse(data)
     printDoctors(doctorsArray);
 });
