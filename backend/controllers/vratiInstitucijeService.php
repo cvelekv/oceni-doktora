@@ -1,9 +1,9 @@
 <?php
 include("../config.php");
-function getInstitucije(){
+function getInstitucije($gradID){
     global $conn;
-
-    $result = $conn->query("SELECT id,ime_institucije from institucija");
+    
+    $result = $conn->query("SELECT * from institucija WHERE grad_id=$gradID");
     $num_rows = $result->num_rows;
 
     $institucije = array();
